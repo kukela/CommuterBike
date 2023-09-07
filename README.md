@@ -1,31 +1,53 @@
 ## 1. 简介
 
-这个项目的目的是减少自组自行车的试错成本。
+减少自组自行车的试错成本，并介绍一些好用的配件，以及一些骑车技巧。
 
 ## 2. 通勤公路车
 
 自组通勤公路自行车，兼顾休闲骑行和业余比赛。
 
-用较低的价格实现轻量化自行车。
+三款都是减震座管，可以做到不穿骑行裤也能长距离骑行。
 
-1. 基础款
+三款用的都是圈刹，相比碟刹有好维护、重量轻、便宜、制动力强等特点，并且都配置了全天候刹车皮，以减少雨天刹车性能问题，不走泥路越野，性能完全没有问题。
 
-    ￥2100左右，8.7kg车身：[链接](https://gitee.com/kukela/commuter-bike/tree/master/doc/RoadBike/basics.md)
+**2.1. 基础款**
 
-2. 进阶款，3k挡
+￥2100左右，8.7kg轻量化车身。
 
-    ￥3000左右，8kg车身：
+[链接](https://gitee.com/kukela/commuter-bike/tree/master/doc/RoadBike/基础通勤.md)
 
-3. 青春款
+**2.2. 进阶款**
 
-    ￥1500左右，9.9kg车身：
+￥3000左右，8kg入门气动超轻车身。
 
+[链接](https://gitee.com/kukela/commuter-bike/tree/master/doc/RoadBike/进阶通勤.md)
 
-## 3. 砾石公路车
+**2.3. 青春款**
+
+￥1500左右，9.9kg实用车身。
+
+[链接](https://gitee.com/kukela/commuter-bike/tree/master/doc/RoadBike/青春通勤.md)
+
+## 3. 配件及工具
+
+**3.1. 装车配件**
+
+[链接](https://gitee.com/kukela/commuter-bike/tree/master/doc/Tools/装车配件.md)
+
+**3.2. 车身配件**
+
+[链接](https://gitee.com/kukela/commuter-bike/tree/master/doc/Tools/车身配件.md)
+
+**3.3. 人身装备**
+
+[链接](https://gitee.com/kukela/commuter-bike/tree/master/doc/Tools/人身装备.md)
+
+## 4. 砾石公路车
 
 自由骑行是一个梦想。
 
-1. 油碟砾石车
+**4.1. 油碟砾石车**
 
-    ￥5000左右，
+￥5000左右，
 
+[正在组装中...]
