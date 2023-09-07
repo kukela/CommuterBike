@@ -12,19 +12,19 @@
 
 **2.1. 基础款**
 
-￥2100左右，8.7kg轻量化车身。
+￥2200左右，8.8kg轻量化车身。
 
 [链接](https://gitee.com/kukela/commuter-bike/blob/master/RoadBike/基础通勤.md)
 
 **2.2. 进阶款**
 
-￥3000左右，8kg入门气动超轻车身。
+￥3100左右，8.1kg入门气动超轻车身。
 
 [链接](https://gitee.com/kukela/commuter-bike/blob/master/RoadBike/进阶通勤.md)
 
 **2.3. 青春款**
 
-￥1500左右，9.9kg实用车身。
+￥1600左右，10kg实用车身。
 
 [链接](https://gitee.com/kukela/commuter-bike/blob/master/RoadBike/青春通勤.md)
 
