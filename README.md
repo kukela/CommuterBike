@@ -20,7 +20,7 @@
 
 **2.2. 进阶款**
 
-￥3100左右，8.1kg入门气动超轻车身。
+￥3200左右，8.1kg入门气动超轻车身。
 
 [链接](https://gitee.com/kukela/commuter-bike/blob/master/RoadBike/进阶通勤.md)
 
