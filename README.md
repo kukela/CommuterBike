@@ -16,7 +16,7 @@
 
 [链接](https://gitee.com/kukela/commuter-bike/blob/master/RoadBike/基础通勤.md)
 
-[示例图]
+![x](https://kukela-images.oss-cn-shanghai.aliyuncs.com/CommuterBike/%E9%80%9A%E5%8B%A4%E5%85%AC%E8%B7%AF%E8%BD%A6/%E9%80%9A%E5%8B%A4%E5%85%AC%E8%B7%AF%E8%BD%A6_%E5%9F%BA%E7%A1%80_%E4%BE%A7%E5%9B%BE.jpg)
 
 **2.2. 进阶款**
 
@@ -32,13 +32,13 @@
 
 ## 3. 配件、工具及技巧
 
-[1. 车身配件](https://gitee.com/kukela/commuter-bike/blob/master/Tools/车身配件.md)
+[1. 车身配件](https://gitee.com/kukela/commuter-bike/blob/master/Doc/车身配件.md)
 
-[2. 人身装备](https://gitee.com/kukela/commuter-bike/blob/master/Tools/人身装备.md)
+[2. 人身装备](https://gitee.com/kukela/commuter-bike/blob/master/Doc/人身装备.md)
 
-[3. x装车工具](https://gitee.com/kukela/commuter-bike/blob/master/Tools/装车工具.md)
+[3. x装车工具](https://gitee.com/kukela/commuter-bike/blob/master/Doc/装车工具.md)
 
-[4. x技巧](https://gitee.com/kukela/commuter-bike/blob/master/Tools/技巧.md)
+[4. x技巧](https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md)
 
 ## 4. 其他自行车
 
