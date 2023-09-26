@@ -36,7 +36,7 @@
 
 [2. 人身装备](https://gitee.com/kukela/commuter-bike/blob/master/Doc/人身装备.md)
 
-[3. x装车工具](https://gitee.com/kukela/commuter-bike/blob/master/Doc/装车工具.md)
+[3. 工具](https://gitee.com/kukela/commuter-bike/blob/master/Doc/工具.md)
 
 [4. x技巧](https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md)
 
