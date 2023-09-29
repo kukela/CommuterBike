@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>胎压参考计算器</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            max-width: 500px;
+            min-width: 320px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            padding: 0 5px 0 1px;
+        }
+
+        body,
+        input,
+        select,
+        button {
+            color: #303133;
+            font-size: 16px !important;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 5px;
+            width: 110px;
+        }
+
+        .cxt {
+            height: 50px;
+        }
+
+        .unit {
+            width: 70px;
+            text-align: center;
+        }
+
+        select,
+        input,
+        button {
+            height: 40px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        [type=radio] {
+            margin: 3px 0 3px 5px;
+            height: 40px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        [type=radio]+label {
+            padding: 5px 10px 5px 5px;
+        }
+
+        [type=number],
+        select {
+            width: 100%;
+            border: 1px solid #dcdfe6;
+        }
+
+        [type=range] {
+            width: 100%;
+        }
+
+        [type=submit] {
+            width: 120px;
+        }
+
+        .c_title {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 5px 0;
+        }
+
+        .c_num {
+            font-size: 36px;
+            font-weight: bold;
+            padding: 5px 0;
+        }
+
+        .c_num2 {
+            font-size: 24px;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="mForm" onsubmit="return onCalc()">
+        <h1 style="text-align: center;">胎压参考计算器</h1>
+        <table>
+            <!-- <tr>
+                <td class="title">重量单位</td>
+                <td class="cxt" colspan="2">
+                    <input type="radio" id="wuR1" name="weightUnit" value="kg" checked />
+                    <label for="wuR1">公斤</label>
+                    <input type="radio" id="wuR2" name="weightUnit" value="lbs" />
+                    <label for="wuR2">磅</label>
+                </td>
+            </tr> -->
+            <tr>
+                <td class="title">骑手体重</td>
+                <td class="cxt">
+                    <input type="number" name="riderWeight" value=60 min="1" max="5000" />
+                </td>
+                <td class="weight unit">kg</td>
+            </tr>
+            <tr>
+                <td class="title">自行车类型</td>
+                <td class="cxt" colspan="2">
+                    <select name="rideStyle" onchange="onRideStyleChange(this)">
+                        <option value="RIDE_STYLE_ROAD">公路车（Road）</option>
+                        <option value="RIDE_STYLE_GRAVEL">砾石车（Gravel）</option>
+                        <option value="RIDE_STYLE_CROSS">公路越野车（Cyclocross）</option>
+                        <option value="RIDE_STYLE_XCOUNTRY_MTB">XC山地车（MTB Cross Country）</option>
+                        <option value="RIDE_STYLE_TRAIL_MTB">越野山地车（MTB Trail）</option>
+                        <option value="RIDE_STYLE_DOWNHILL_MTB">速降山地车（MTB Downhill）</option>
+                        <option value="RIDE_STYLE_ENDURO_MTB">耐力山地车（MTB Enduro）</option>
+                        <option value="RIDE_STYLE_FAT">胖胎车（Fatbike）</option>
+                        <!-- <option value="RIDE_STYLE_DIY">自定义</option> -->
+                    </select>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td style="text-align: right;">
+                    <input type="checkbox" />
+                </td>
+                <td>使用预设值</td>
+            </tr> -->
+            <tr>
+                <td class="title">车重</td>
+                <td class="cxt">
+                    <input type="number" name="bikeWeight" min="1" max="5000" />
+                </td>
+                <td class="weight unit">
+                    kg
+                </td>
+            </tr>
+            <tr>
+                <td class="title">轮圈直径</td>
+                <td class="cxt" colspan="2">
+                    <select name="wheelDiameter"></select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">内轮圈宽度</td>
+                <td class="cxt">
+                    <input type="number" name="innerRimWidth" min="0.01" max="9999" />
+                </td>
+                <td class="unit">
+                    mm
+                </td>
+            </tr>
+            <tr>
+                <td class="title">轮圈类型</td>
+                <td class="cxt" colspan="2">
+                    <select name="rimType">
+                        <option value="wd1">管胎</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">前轮胎宽</td>
+                <td class="cxt">
+                    <input name="frontTireWidth" type="range" min="1" max="100" step="1" />
+                </td>
+                <td class="unit" id="frontTireWdithVU">28 mm</td>
+            </tr>
+            <tr>
+                <td class="title">后轮胎宽</td>
+                <td class="cxt">
+                    <input name="rearTireWidth" type="range" min="1" max="100" step="1" />
+                </td>
+                <td class="unit" id="rearTireWdithVU">28 mm</td>
+            </tr>
+            <tr>
+                <td class="title">前轮外胎</td>
+                <td class="cxt" colspan="2">
+                    <select name="frontTireCasing">
+                        <option value="wd1">标准</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">后轮外胎</td>
+                <td class="cxt" colspan="2">
+                    <select name="rearTireCasing">
+                        <option value="wd1">标准</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">地面</td>
+                <td class="cxt" colspan="2">
+                    <select name="surface">
+                        <option value="wd1">干</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table style="text-align: center;margin-top: 10px;">
+            <tr>
+                <td colspan="2">
+                    <button type="submit">计算</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 20px 0 10px 0;">参考胎压</td>
+            </tr>
+            <tr>
+                <td class="c_title">前轮</td>
+                <td class="c_title">后轮</td>
+            </tr>
+            <tr>
+                <td class="c_num">-- psi</td>
+                <td class="c_num">-- psi</td>
+            </tr>
+            <tr>
+                <td class="c_num2">-- bar</td>
+                <td class="c_num2">-- bar</td>
+            </tr>
+        </table>
+        <div style="margin: 40px 0 20px 0;padding: 3px;">
+            技术来源 ： <a href="https://axs.sram.com/guides/tire/pressure">https://axs.sram.com/guides/tire/pressure</a><br>
+            说明文档：
+        </div>
+    </form>
+</body>
+
+<style>
+
+</style>
+
+<script src="./utils.js"></script>
+<script src="./tirePressureGuide.js"></script>
+<script>
+    window.onload = function () {
+        if (!isES6()) return
+        onRideStyleChange()
+        // initView()
+    }
+
+    function initView() {
+        const m = this.getDefaultSettingValues(RIDE_STYLE_ROAD)
+        m.rideStyle = RIDE_STYLE_ROAD;
+        m.wheelPosition = 'WHEEL_FRONT';
+        m.tireCasing = m.frontTireCasing;
+        m.tireWidth = m.frontTireWidth;
+        m.riderWeight = 60;
+        console.log(m)
+
+        let r = this.calculateRecommendedPressure(m);
+        let r1 = Math.round(.001 * r * 100) / 100
+        let r2 = Math.round(.0145038 * r * 10) / 10
+        console.log(r, r1, r2)
+        console.log(getCompatibleRimWidth(28))
+    }
+
+    function onRideStyleChange(e) {
+        let sO = null;
+        try {
+            sO = e.options[e.selectedIndex].value
+        } catch (e) {
+            sO = RIDE_STYLE_ROAD
+            let el = getELWithName('rideStyle')
+            el.value = sO
+        }
+        let wheelDiameterEl = getELWithName('wheelDiameter')
+        let rimTypeEl = getELWithName('rimType')
+        let wdList = []
+        let rtList = []
+        switch (sO) {
+            case RIDE_STYLE_GRAVEL:
+                wdList = [{ v: 622, t: "700c" }, { v: 582, t: "650b" }, { v: 571, t: "650c" }]
+                break
+            case RIDE_STYLE_CROSS:
+                wdList = [{ v: 622, t: "700c" }]
+                break
+            case RIDE_STYLE_XCOUNTRY_MTB:
+                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                break
+            case RIDE_STYLE_TRAIL_MTB:
+                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                break
+            case RIDE_STYLE_DOWNHILL_MTB:
+                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                break
+            case RIDE_STYLE_ENDURO_MTB:
+                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                break
+            case RIDE_STYLE_FAT:
+                wdList = [{ v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                break
+            case RIDE_STYLE_ROAD:
+            default:
+                wdList = [{ v: 622, t: "700c" }, { v: 582, t: "650b" }, { v: 571, t: "650c" }]
+                break
+        }
+        wheelDiameterEl.innerHTML = getOptionList(wdList)
+        rimTypeEl.innerHTML = getOptionList(rtList)
+
+        //  rimType frontTireWidth rearTireWidth
+        // frontTireCasing rearTireCasing surface
+        let dsvM = getDefaultSettingValues(sO)
+        getELWithName('bikeWeight').value = dsvM.bikeWeight
+        wheelDiameterEl.value = dsvM.wheelDiameter
+        getELWithName('innerRimWidth').value = dsvM.innerRimWidth
+
+        // rimType
+    }
+
+    function getELWithName(n) {
+        return document.querySelector("[name='" + n + "']");
+    }
+
+    function getOptionList(list) {
+        // <option value="wd1">700c</option>
+        //                 <option value="wd2">650b</option>
+        //                 <option value="wd2">650c</option>
+        let t = ""
+        list.forEach(e => {
+            t += "<option value='" + e.v + "''>" + e.t + "</option>"
+        });
+        return t
+    }
+
+    function onCalc(e) {
+        const form = document.querySelector('#mForm');
+        const formData = new FormData(form);
+
+        console.log(formData.get('weightUnit'))
+
+        var object = {};
+        formData.forEach((value, key) => object[key] = value);
+        // var json = JSON.stringify(object);
+
+        console.log(object)
+
+        return false
+    }
+
+    function onddSubmit(e) {
+        const t = {},
+            n = document.getElementById("bikeWeight").value,
+            i = document.getElementById("riderWeight").value;
+        t.rideStyle = rideStyle,
+            t.bikeWeight = "lbs" === selectedMassUnit ? Math.round(n / 2.20462) : Math.round(n),
+            t.wheelDiameter = parseInt(document.getElementById("wheelDiameter").value),
+            t.frontTireWidth = parseFloat(document.getElementById("frontTireWidth").value),
+            t.rearTireWidth = parseFloat(document.getElementById("rearTireWidth").value),
+            t.frontTireCasing = document.getElementById("frontTireCasing").value,
+            t.rearTireCasing = document.getElementById("rearTireCasing").value,
+            t.innerRimWidth = parseInt(document.getElementById("innerRimWidth").value),
+            t.rimType = document.getElementById("rimType").value,
+            t.surface = document.getElementById("surface").value,
+            t.riderWeight = "lbs" === selectedMassUnit ? Math.round(i / 2.20462) : Math.round(i);
+        const r = calculateRecommendedPressure({
+            ...t,
+            pressureUnit: selectedPressureUnit,
+            tireCasing: t.frontTireCasing,
+            tireWidth: "in" === getMeasurementUnit() ? convertInchesToMM(t.frontTireWidth) : t.frontTireWidth,
+            wheelPosition: "WHEEL_FRONT"
+        }),
+            a = calculateRecommendedPressure({
+                ...t,
+                pressureUnit: selectedPressureUnit,
+                tireCasing: t.rearTireCasing,
+                tireWidth: "in" === getMeasurementUnit() ? convertInchesToMM(t.rearTireWidth) : t.rearTireWidth,
+                wheelPosition: "WHEEL_REAR"
+            });
+        "RIM_TYPE_TUBELESS_STRAIGHT_SIDE" === t.rimType &&
+            (r > 5e3 || a > 5e3) && showTireWarning(),
+            "bar" === selectedPressureUnit &&
+            (document.getElementById("frontPressure").innerHTML = `${Math.round(.001 * r * 100) / 100} ${selectedPressureUnit}`,
+                document.getElementById("rearPressure").innerHTML = `${Math.round(.001 * a * 100) / 100} ${selectedPressureUnit}`),
+
+            "psi" === selectedPressureUnit &&
+            (document.getElementById("frontPressure").innerHTML = `${Math.round(.0145038 * r * 10) / 10} ${selectedPressureUnit}`,
+                document.getElementById("rearPressure").innerHTML = `${Math.round(.0145038 * a * 10) / 10} ${selectedPressureUnit}`)
+    }
+</script>
+
+</html>
