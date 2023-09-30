@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 500px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    padding: 0 5px 0 1px;
+}
+
+body,
+input,
+select,
+button {
+    color: #303133;
+    font-size: 16px !important;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 5px;
+    width: 110px;
+}
+
+.cxt {
+    height: 50px;
+}
+
+.unit {
+    width: 70px;
+    text-align: center;
+}
+
+select,
+input,
+button {
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+[type=radio] {
+    margin: 3px 0 3px 5px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+[type=radio]+label {
+    padding: 5px 10px 5px 5px;
+}
+
+[type=number],
+select {
+    width: 100%;
+    border: 1px solid #dcdfe6;
+}
+
+[type=range] {
+    width: 100%;
+}
+
+[type=submit] {
+    width: 120px;
+}
+
+.c_title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.c_num {
+    font-size: 36px;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.c_num2 {
+    font-size: 24px;
+    padding: 5px 0;
+}

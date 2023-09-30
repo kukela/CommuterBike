@@ -6,99 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <title>胎压参考计算器</title>
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        form {
-            max-width: 500px;
-            min-width: 320px;
-            margin: 0 auto;
-        }
-
-        table {
-            width: 100%;
-            padding: 0 5px 0 1px;
-        }
-
-        body,
-        input,
-        select,
-        button {
-            color: #303133;
-            font-size: 16px !important;
-        }
-
-        .title {
-            font-size: 20px;
-            font-weight: bold;
-            text-align: right;
-            padding-right: 5px;
-            width: 110px;
-        }
-
-        .cxt {
-            height: 50px;
-        }
-
-        .unit {
-            width: 70px;
-            text-align: center;
-        }
-
-        select,
-        input,
-        button {
-            height: 40px;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        [type=radio] {
-            margin: 3px 0 3px 5px;
-            height: 40px;
-            vertical-align: middle;
-            display: inline-block;
-        }
-
-        [type=radio]+label {
-            padding: 5px 10px 5px 5px;
-        }
-
-        [type=number],
-        select {
-            width: 100%;
-            border: 1px solid #dcdfe6;
-        }
-
-        [type=range] {
-            width: 100%;
-        }
-
-        [type=submit] {
-            width: 120px;
-        }
-
-        .c_title {
-            font-size: 20px;
-            font-weight: bold;
-            padding: 5px 0;
-        }
-
-        .c_num {
-            font-size: 36px;
-            font-weight: bold;
-            padding: 5px 0;
-        }
-
-        .c_num2 {
-            font-size: 24px;
-            padding: 5px 0;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="./global.css">
 </head>
 
 <body>
@@ -117,7 +25,7 @@
             <tr>
                 <td class="title">骑手体重</td>
                 <td class="cxt">
-                    <input type="number" name="riderWeight" value=60 min="1" max="5000" />
+                    <input type="number" name="riderWeight" value=60 min="1" max="5000" step="0.01" />
                 </td>
                 <td class="weight unit">kg</td>
             </tr>
@@ -133,7 +41,7 @@
                         <option value="RIDE_STYLE_DOWNHILL_MTB">速降山地车（MTB Downhill）</option>
                         <option value="RIDE_STYLE_ENDURO_MTB">耐力山地车（MTB Enduro）</option>
                         <option value="RIDE_STYLE_FAT">胖胎车（Fatbike）</option>
-                        <!-- <option value="RIDE_STYLE_DIY">自定义</option> -->
+                        <option value="RIDE_STYLE_DIY">小轮车（测试）</option>
                     </select>
                 </td>
             </tr>
@@ -146,11 +54,9 @@
             <tr>
                 <td class="title">车重</td>
                 <td class="cxt">
-                    <input type="number" name="bikeWeight" min="1" max="5000" />
+                    <input type="number" name="bikeWeight" min="1" max="5000" step="0.01" />
                 </td>
-                <td class="weight unit">
-                    kg
-                </td>
+                <td class="weight unit">kg</td>
             </tr>
             <tr>
                 <td class="title">轮圈直径</td>
@@ -161,56 +67,52 @@
             <tr>
                 <td class="title">内轮圈宽度</td>
                 <td class="cxt">
-                    <input type="number" name="innerRimWidth" min="0.01" max="9999" />
+                    <input type="number" name="innerRimWidth" min="1" />
                 </td>
-                <td class="unit">
-                    mm
-                </td>
+                <td class="unit">mm</td>
             </tr>
             <tr>
                 <td class="title">轮圈类型</td>
                 <td class="cxt" colspan="2">
-                    <select name="rimType">
-                        <option value="wd1">管胎</option>
-                    </select>
+                    <select name="rimType"></select>
                 </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">开口胎参考开口管胎</td>
             </tr>
             <tr>
                 <td class="title">前轮胎宽</td>
                 <td class="cxt">
-                    <input name="frontTireWidth" type="range" min="1" max="100" step="1" />
+                    <input name="frontTireWidth" type="range" min="1" max="100" step="1"
+                        oninput="onFrontTireWidthChange(this)" />
                 </td>
-                <td class="unit" id="frontTireWdithVU">28 mm</td>
+                <td class="unit" id="frontTireWidthVU" onclick="onFrontTireWidthVUClick()">28 mm</td>
             </tr>
             <tr>
                 <td class="title">后轮胎宽</td>
                 <td class="cxt">
-                    <input name="rearTireWidth" type="range" min="1" max="100" step="1" />
+                    <input name="rearTireWidth" type="range" min="1" max="100" step="1"
+                        oninput="onRearTireWidthChange(this)" />
                 </td>
-                <td class="unit" id="rearTireWdithVU">28 mm</td>
+                <td class="unit" id="rearTireWidthVU" onclick="onRearTireWidthVUClick()">28 mm</td>
             </tr>
             <tr>
                 <td class="title">前轮外胎</td>
                 <td class="cxt" colspan="2">
-                    <select name="frontTireCasing">
-                        <option value="wd1">标准</option>
-                    </select>
+                    <select name="frontTireCasing"></select>
                 </td>
             </tr>
             <tr>
                 <td class="title">后轮外胎</td>
                 <td class="cxt" colspan="2">
-                    <select name="rearTireCasing">
-                        <option value="wd1">标准</option>
-                    </select>
+                    <select name="rearTireCasing"></select>
                 </td>
             </tr>
             <tr>
                 <td class="title">地面</td>
                 <td class="cxt" colspan="2">
-                    <select name="surface">
-                        <option value="wd1">干</option>
-                    </select>
+                    <select name="surface"></select>
                 </td>
             </tr>
         </table>
@@ -228,48 +130,38 @@
                 <td class="c_title">后轮</td>
             </tr>
             <tr>
-                <td class="c_num">-- psi</td>
-                <td class="c_num">-- psi</td>
+                <td class="c_num" id="frontPsi">-- psi</td>
+                <td class="c_num" id="rearPsi">-- psi</td>
             </tr>
             <tr>
-                <td class="c_num2">-- bar</td>
-                <td class="c_num2">-- bar</td>
+                <td class="c_num2" id="frontBar">-- bar</td>
+                <td class="c_num2" id="rearBar">-- bar</td>
             </tr>
         </table>
-        <div style="margin: 40px 0 20px 0;padding: 3px;">
-            技术来源 ： <a href="https://axs.sram.com/guides/tire/pressure">https://axs.sram.com/guides/tire/pressure</a><br>
-            说明文档：
+        <div style="margin: 40px 0 20px 0;padding: 5px;">
+            技术来源：<a href="https://axs.sram.com/guides/tire/pressure">SRAM胎压计算器</a><br>
+            说明文档：<a href="https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md">文档</a><br>
+            轮圈尺寸参考：<a href="https://www.modernbike.com/iso-sizes-for-bicycle-tires-and-rims">modernbike</a>、<a
+                href="https://cyclingvitality.com/bike-wheel-sizes-explained-a-guide-for-beginners/">cyclingvitality</a>
         </div>
     </form>
 </body>
 
-<style>
-
-</style>
-
 <script src="./utils.js"></script>
+<script src="./global.js"></script>
 <script src="./tirePressureGuide.js"></script>
 <script>
+    var frontTireWidthVU, rearTireWidthVU;
+
     window.onload = function () {
         if (!isES6()) return
+        initView()
         onRideStyleChange()
-        // initView()
     }
 
     function initView() {
-        const m = this.getDefaultSettingValues(RIDE_STYLE_ROAD)
-        m.rideStyle = RIDE_STYLE_ROAD;
-        m.wheelPosition = 'WHEEL_FRONT';
-        m.tireCasing = m.frontTireCasing;
-        m.tireWidth = m.frontTireWidth;
-        m.riderWeight = 60;
-        console.log(m)
-
-        let r = this.calculateRecommendedPressure(m);
-        let r1 = Math.round(.001 * r * 100) / 100
-        let r2 = Math.round(.0145038 * r * 10) / 10
-        console.log(r, r1, r2)
-        console.log(getCompatibleRimWidth(28))
+        frontTireWidthVU = document.getElementById("frontTireWidthVU")
+        rearTireWidthVU = document.getElementById("rearTireWidthVU")
     }
 
     function onRideStyleChange(e) {
@@ -283,116 +175,170 @@
         }
         let wheelDiameterEl = getELWithName('wheelDiameter')
         let rimTypeEl = getELWithName('rimType')
-        let wdList = []
-        let rtList = []
+        let frontTireCasingEl = getELWithName('frontTireCasing')
+        let rearTireCasingEl = getELWithName('rearTireCasing')
+        let surfaceEl = getELWithName('surface')
+
+        let wdKList = []
+        tireUnit = 0
+        let rtList = [
+            { v: RIM_TYPE_TUBELESS_STRAIGHT_SIDE, t: '无内胎直边（Hookless）' },
+            { v: RIM_TYPE_TUBELESS_CROCHET, t: '无内胎钩边' },
+            { v: RIM_TYPE_TUBULAR, t: '管胎' },
+            { v: RIM_TYPE_TUBES, t: '开口管胎' }]
+        let twMap = {}
+        let tcList = [
+            { v: TIRE_CASING_THIN, t: "薄" },
+            { v: TIRE_CASING_STANDARD, t: "标准" },
+            { v: TIRE_CASING_REINFORCED, t: "加强" },
+            { v: TIRE_CASING_DOUBLE, t: "速降 / 双层" }]
+        let sList = [{ v: SURFACE_DRY, t: "干" }, { v: SURFACE_SNOW, t: "雪" }, { v: SURFACE_WET, t: "湿" }]
         switch (sO) {
             case RIDE_STYLE_GRAVEL:
-                wdList = [{ v: 622, t: "700c" }, { v: 582, t: "650b" }, { v: 571, t: "650c" }]
+                wdKList = ['700c', '650b', '650c']
+                twMap = { min: 18, max: 65, step: 1 }
+                tcList.shift()
+                sList.splice(1, 1)
                 break
             case RIDE_STYLE_CROSS:
-                wdList = [{ v: 622, t: "700c" }]
+                wdKList = ['700c']
+                twMap = { min: 18, max: 50, step: 1 }
+                sList.splice(1, 1)
                 break
             case RIDE_STYLE_XCOUNTRY_MTB:
-                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                wdKList = ['29in', '27.5in', '26in']
+                tireUnit = 1
+                twMap = { min: 2, max: 3.8, step: 0.05 }
+                tcList.shift()
+                sList.splice(1, 1)
                 break
             case RIDE_STYLE_TRAIL_MTB:
-                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                wdKList = ['29in', '27.5in', '26in']
+                tireUnit = 1
+                twMap = { min: 2, max: 3.8, step: 0.05 }
+                tcList.shift()
+                sList.splice(1, 1)
                 break
             case RIDE_STYLE_DOWNHILL_MTB:
-                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                wdKList = ['29in', '27.5in', '26in']
+                tireUnit = 1
+                twMap = { min: 2, max: 3.8, step: 0.05 }
+                tcList.shift()
+                sList.splice(1, 1)
                 break
             case RIDE_STYLE_ENDURO_MTB:
-                wdList = [{ v: 622, t: "29英寸" }, { v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                wdKList = ['29in', '27.5in', '26in']
+                tireUnit = 1
+                twMap = { min: 2, max: 3.8, step: 0.05 }
+                tcList.shift()
+                sList.splice(1, 1)
                 break
             case RIDE_STYLE_FAT:
-                wdList = [{ v: 571, t: "27.5英寸" }, { v: 559, t: "26英寸" }]
+                wdKList = ['27.5in', '26in']
+                tireUnit = 1
+                twMap = { min: 3.8, max: 5, step: 0.05 }
+                tcList.shift()
+                break
+            case RIDE_STYLE_DIY:
+                wdKList = ['24in', '20in', '16in', '14in', '12.5in']
+                tireUnit = 1
+                twMap = { min: 1, max: 3.8, step: 0.05 }
+                sList.splice(1, 1)
                 break
             case RIDE_STYLE_ROAD:
             default:
-                wdList = [{ v: 622, t: "700c" }, { v: 582, t: "650b" }, { v: 571, t: "650c" }]
+                wdKList = ['700c', '650b', '650c']
+                twMap = { min: 18, max: 50, step: 1 }
+                sList.splice(1, 1)
                 break
         }
+        let wdList = []
+        wdKList.forEach(k => {
+            wdList.push(wheelDiameterMap[k])
+        });
         wheelDiameterEl.innerHTML = getOptionList(wdList)
         rimTypeEl.innerHTML = getOptionList(rtList)
+        frontTireCasingEl.innerHTML = getOptionList(tcList)
+        rearTireCasingEl.innerHTML = getOptionList(tcList)
+        surfaceEl.innerHTML = getOptionList(sList)
 
-        //  rimType frontTireWidth rearTireWidth
-        // frontTireCasing rearTireCasing surface
         let dsvM = getDefaultSettingValues(sO)
         getELWithName('bikeWeight').value = dsvM.bikeWeight
         wheelDiameterEl.value = dsvM.wheelDiameter
         getELWithName('innerRimWidth').value = dsvM.innerRimWidth
-
-        // rimType
+        rimTypeEl.value = dsvM.rimType
+        twMap.v = dsvM.frontTireWidth
+        setRangeMap('frontTireWidth', twMap)
+        twMap.v = dsvM.rearTireWidth
+        setRangeMap('rearTireWidth', twMap)
+        frontTireCasingEl.value = dsvM.frontTireCasing
+        rearTireCasingEl.value = dsvM.rearTireCasing
+        surfaceEl.value = dsvM.surface
     }
 
-    function getELWithName(n) {
-        return document.querySelector("[name='" + n + "']");
+    function onFrontTireWidthChange(e) {
+        frontTireWidthVU.innerHTML = e.value + " " + getTireUnitText()
     }
 
-    function getOptionList(list) {
-        // <option value="wd1">700c</option>
-        //                 <option value="wd2">650b</option>
-        //                 <option value="wd2">650c</option>
-        let t = ""
-        list.forEach(e => {
-            t += "<option value='" + e.v + "''>" + e.t + "</option>"
-        });
-        return t
+    function onFrontTireWidthVUClick() {
+        const v = Number(window.prompt("前轮胎宽"))
+        setRangeValue('frontTireWidth', v)
+    }
+
+    function onRearTireWidthChange(e) {
+        rearTireWidthVU.innerHTML = e.value + " " + getTireUnitText()
+    }
+
+    function onRearTireWidthVUClick() {
+        const v = Number(window.prompt("后轮胎宽"))
+        setRangeValue('rearTireWidth', v)
     }
 
     function onCalc(e) {
-        const form = document.querySelector('#mForm');
-        const formData = new FormData(form);
+        const formData = new FormData(document.getElementById("mForm"));
+        let m = {};
+        formData.forEach((value, key) => m[key] = value);
+        m.riderWeight = Number(m.riderWeight)
+        m.bikeWeight = Number(m.bikeWeight)
+        m.wheelDiameter = Number(m.wheelDiameter)
+        m.innerRimWidth = Number(m.innerRimWidth)
+        m.frontTireWidth = Number(m.frontTireWidth);
+        m.rearTireWidth = Number(m.rearTireWidth);
+        if (tireUnit == 1) {
+            m.frontTireWidth = convertInchesToMM(m.frontTireWidth)
+            m.rearTireWidth = convertInchesToMM(m.rearTireWidth)
+        }
 
-        console.log(formData.get('weightUnit'))
+        m.wheelPosition = 'WHEEL_FRONT';
+        m.tireCasing = m.frontTireCasing;
+        m.tireWidth = m.frontTireWidth;
+        let frontC = calculateRecommendedPressure(m);
+        console.log(m)
 
-        var object = {};
-        formData.forEach((value, key) => object[key] = value);
-        // var json = JSON.stringify(object);
+        m.wheelPosition = 'WHEEL_REAR';
+        m.tireCasing = m.rearTireCasing;
+        m.tireWidth = m.rearTireWidth;
+        let rearC = calculateRecommendedPressure(m);
 
-        console.log(object)
+        let frontPsiEl = document.getElementById("frontPsi")
+        let rearPsiEl = document.getElementById("rearPsi")
+        let frontBarEl = document.getElementById("frontBar")
+        let rearBarEl = document.getElementById("rearBar")
+
+        frontPsiEl.innerHTML = recommendedPressure2Psi(frontC) + " psi"
+        rearPsiEl.innerHTML = recommendedPressure2Psi(rearC) + " psi"
+        frontBarEl.innerHTML = recommendedPressure2Bar(frontC) + " bar"
+        rearBarEl.innerHTML = recommendedPressure2Bar(rearC) + " bar"
 
         return false
     }
 
-    function onddSubmit(e) {
-        const t = {},
-            n = document.getElementById("bikeWeight").value,
-            i = document.getElementById("riderWeight").value;
-        t.rideStyle = rideStyle,
-            t.bikeWeight = "lbs" === selectedMassUnit ? Math.round(n / 2.20462) : Math.round(n),
-            t.wheelDiameter = parseInt(document.getElementById("wheelDiameter").value),
-            t.frontTireWidth = parseFloat(document.getElementById("frontTireWidth").value),
-            t.rearTireWidth = parseFloat(document.getElementById("rearTireWidth").value),
-            t.frontTireCasing = document.getElementById("frontTireCasing").value,
-            t.rearTireCasing = document.getElementById("rearTireCasing").value,
-            t.innerRimWidth = parseInt(document.getElementById("innerRimWidth").value),
-            t.rimType = document.getElementById("rimType").value,
-            t.surface = document.getElementById("surface").value,
-            t.riderWeight = "lbs" === selectedMassUnit ? Math.round(i / 2.20462) : Math.round(i);
-        const r = calculateRecommendedPressure({
-            ...t,
-            pressureUnit: selectedPressureUnit,
-            tireCasing: t.frontTireCasing,
-            tireWidth: "in" === getMeasurementUnit() ? convertInchesToMM(t.frontTireWidth) : t.frontTireWidth,
-            wheelPosition: "WHEEL_FRONT"
-        }),
-            a = calculateRecommendedPressure({
-                ...t,
-                pressureUnit: selectedPressureUnit,
-                tireCasing: t.rearTireCasing,
-                tireWidth: "in" === getMeasurementUnit() ? convertInchesToMM(t.rearTireWidth) : t.rearTireWidth,
-                wheelPosition: "WHEEL_REAR"
-            });
-        "RIM_TYPE_TUBELESS_STRAIGHT_SIDE" === t.rimType &&
-            (r > 5e3 || a > 5e3) && showTireWarning(),
-            "bar" === selectedPressureUnit &&
-            (document.getElementById("frontPressure").innerHTML = `${Math.round(.001 * r * 100) / 100} ${selectedPressureUnit}`,
-                document.getElementById("rearPressure").innerHTML = `${Math.round(.001 * a * 100) / 100} ${selectedPressureUnit}`),
+    function recommendedPressure2Psi(v) {
+        return Math.round(.0145038 * v * 10) / 10
+    }
 
-            "psi" === selectedPressureUnit &&
-            (document.getElementById("frontPressure").innerHTML = `${Math.round(.0145038 * r * 10) / 10} ${selectedPressureUnit}`,
-                document.getElementById("rearPressure").innerHTML = `${Math.round(.0145038 * a * 10) / 10} ${selectedPressureUnit}`)
+    function recommendedPressure2Bar(v) {
+        return Math.round(.001 * v * 100) / 100
     }
 </script>
 

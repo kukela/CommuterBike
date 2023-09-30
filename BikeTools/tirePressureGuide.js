@@ -6,14 +6,18 @@ const RIDE_STYLE_CROSS = "RIDE_STYLE_CROSS",
     RIDE_STYLE_ROAD = "RIDE_STYLE_ROAD",
     RIDE_STYLE_TRAIL_MTB = "RIDE_STYLE_TRAIL_MTB",
     RIDE_STYLE_XCOUNTRY_MTB = "RIDE_STYLE_XCOUNTRY_MTB",
+    RIDE_STYLE_DIY = "RIDE_STYLE_DIY",
     RIM_TYPE_TUBELESS_CROCHET = "RIM_TYPE_TUBELESS_CROCHET",
     RIM_TYPE_TUBELESS_STRAIGHT_SIDE = "RIM_TYPE_TUBELESS_STRAIGHT_SIDE",
+    RIM_TYPE_TUBES = "RIM_TYPE_TUBES",
     RIM_TYPE_TUBULAR = "RIM_TYPE_TUBULAR",
     SURFACE_DRY = "SURFACE_DRY",
     SURFACE_SNOW = "SURFACE_SNOW",
+    SURFACE_WET = "SURFACE_WET",
     TIRE_CASING_DOUBLE = "TIRE_CASING_DOUBLE",
     TIRE_CASING_REINFORCED = "TIRE_CASING_REINFORCED",
     TIRE_CASING_STANDARD = "TIRE_CASING_STANDARD",
+    TIRE_CASING_THIN = "TIRE_CASING_THIN",
     CASING_FUDGE = {
         TIRE_CASING_DOUBLE: .9,
         TIRE_CASING_REINFORCED: .95,
@@ -32,7 +36,8 @@ const RIDE_STYLE_CROSS = "RIDE_STYLE_CROSS",
         RIDE_STYLE_GRAVEL: .9,
         RIDE_STYLE_ROAD: 1,
         RIDE_STYLE_TRAIL_MTB: 1.05,
-        RIDE_STYLE_XCOUNTRY_MTB: .9
+        RIDE_STYLE_XCOUNTRY_MTB: .9,
+        RIDE_STYLE_DIY: .9,
     },
     RIM_TYPE_FUDGE = {
         RIM_TYPE_TUBELESS_CROCHET: 1.03,
@@ -117,18 +122,6 @@ function getCompatibleRimWidth(_) {
 
 function getDefaultSettingValues(_) {
     switch (_) {
-        case RIDE_STYLE_ROAD:
-            return {
-                bikeWeight: 6.8,
-                frontTireCasing: TIRE_CASING_STANDARD,
-                frontTireWidth: 25,
-                innerRimWidth: 23,
-                rearTireCasing: TIRE_CASING_STANDARD,
-                rearTireWidth: 25,
-                rimType: RIM_TYPE_TUBELESS_STRAIGHT_SIDE,
-                surface: SURFACE_DRY,
-                wheelDiameter: 622
-            };
         case RIDE_STYLE_CROSS:
             return {
                 bikeWeight: 7.7,
@@ -199,7 +192,7 @@ function getDefaultSettingValues(_) {
                 rearTireWidth: 2.5,
                 rimType: RIM_TYPE_TUBELESS_CROCHET,
                 surface: SURFACE_DRY,
-                wheelDiameter: 571
+                wheelDiameter: 584 //571
             };
         case RIDE_STYLE_FAT:
             return {
@@ -211,10 +204,33 @@ function getDefaultSettingValues(_) {
                 rearTireWidth: 3.8,
                 rimType: RIM_TYPE_TUBELESS_CROCHET,
                 surface: SURFACE_SNOW,
-                wheelDiameter: 571
+                wheelDiameter: 584 //571
             };
+        case RIDE_STYLE_DIY:
+            return {
+                bikeWeight: 9,
+                frontTireCasing: TIRE_CASING_STANDARD,
+                frontTireWidth: 1.5,
+                innerRimWidth: 23,
+                rearTireCasing: TIRE_CASING_STANDARD,
+                rearTireWidth: 1.5,
+                rimType: RIM_TYPE_TUBES,
+                surface: SURFACE_DRY,
+                wheelDiameter: 406
+            };
+        case RIDE_STYLE_ROAD:
         default:
-            return {}
+            return {
+                bikeWeight: 6.8,
+                frontTireCasing: TIRE_CASING_STANDARD,
+                frontTireWidth: 25,
+                innerRimWidth: 23,
+                rearTireCasing: TIRE_CASING_STANDARD,
+                rearTireWidth: 25,
+                rimType: RIM_TYPE_TUBELESS_STRAIGHT_SIDE,
+                surface: SURFACE_DRY,
+                wheelDiameter: 622
+            };
     }
 }
 
@@ -250,11 +266,6 @@ function getTireWidthSliderValues(_) {
                 minTireWidth: 18
             }
     }
-}
-
-function convertInchesToMM(_) {
-    let T = Number(_);
-    return T *= 25.4, T = Math.round(T)
 }
 
 function calculateRecommendedPressure(_) {

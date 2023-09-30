@@ -32,13 +32,13 @@
 
 ## 3. 配件、工具及技巧
 
-[1. 车身配件](https://gitee.com/kukela/commuter-bike/blob/master/Doc/车身配件.md)
+1. [车身配件](https://gitee.com/kukela/commuter-bike/blob/master/Doc/车身配件.md)
 
-[2. 人身装备](https://gitee.com/kukela/commuter-bike/blob/master/Doc/人身装备.md)
+2. [人身装备](https://gitee.com/kukela/commuter-bike/blob/master/Doc/人身装备.md)
 
-[3. 工具](https://gitee.com/kukela/commuter-bike/blob/master/Doc/工具.md)
+3. [工具](https://gitee.com/kukela/commuter-bike/blob/master/Doc/工具.md)
 
-[4. x技巧](https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md)
+4. [技巧](https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md)、[胎压参考计算器](https://kukela.gitee.io/commuter-bike/tirePressureCalc.html)、[传动速度计算器]
 
 ## 4. 其他自行车
 
