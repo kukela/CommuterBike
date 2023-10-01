@@ -138,7 +138,8 @@
                 <td class="c_num2" id="rearBar">-- bar</td>
             </tr>
         </table>
-        <div style="margin: 40px 0 20px 0;padding: 5px;">
+        <hr style="margin-top: 30px;">
+        <div style="margin: 10px 0 20px 0;padding: 5px;">
             技术来源：<a href="https://axs.sram.com/guides/tire/pressure">SRAM胎压计算器</a><br>
             说明文档：<a href="https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md">文档</a><br>
             轮圈尺寸参考：<a href="https://www.modernbike.com/iso-sizes-for-bicycle-tires-and-rims">modernbike</a>、<a
@@ -281,7 +282,7 @@
     }
 
     function onFrontTireWidthVUClick() {
-        const v = Number(window.prompt("前轮胎宽"))
+        const v = Number(prompt("前轮胎宽", getELWithName('frontTireWidth').value))
         setRangeValue('frontTireWidth', v)
     }
 
@@ -290,7 +291,7 @@
     }
 
     function onRearTireWidthVUClick() {
-        const v = Number(window.prompt("后轮胎宽"))
+        const v = Number(prompt("后轮胎宽", getELWithName('rearTireWidth').value))
         setRangeValue('rearTireWidth', v)
     }
 
