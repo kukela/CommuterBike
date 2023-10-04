@@ -38,7 +38,7 @@
 
 3. [工具](https://gitee.com/kukela/commuter-bike/blob/master/Doc/工具.md)
 
-4. [技巧](https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md)、[胎压参考计算器](https://kukela.gitee.io/commuter-bike/tirePressureCalc.html)、[传动速度计算器]
+4. [技巧](https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md)、[胎压参考计算器](https://kukela.gitee.io/commuter-bike/tirePressureCalc.html)、[传动速度计算器](https://kukela.gitee.io/commuter-bike/gearCalc.html)
 
 ## 4. 其他自行车
 

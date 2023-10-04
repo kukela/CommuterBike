@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form id="mForm" onsubmit="return onCalc()">
+    <form id="mForm" onsubmit="return onCalc()" onchange="onCalc()">
         <h1 style="text-align: center;">传动速度计算器</h1>
         <table>
             <tr>
@@ -28,7 +28,7 @@
             <tr>
                 <td class="title">轮圈直径</td>
                 <td class="cxt">
-                    <select name="wheelDiameter"></select>
+                    <select name="wheelDiameterK" oninput="onWheelDiameterChange(this)"></select>
                 </td>
             </tr>
             <tr>
@@ -45,36 +45,106 @@
                 </td>
                 <td class="unit">mm</td>
             </tr>
-            <!-- 踏频范围 -->
             <tr>
-                <td class="title">踏频范围</td>
+                <td class="title">踏频</td>
                 <td class="cxt">
-                    <input type="number" name="rpmMin" value=80 min="1" max="1000" step="1" />
-                    <span>到</span>
-                    <input type="number" name="rpmMax" value=100 min="1" max="1000" step="1" />
+                    <input type="number" name="rpm" value=90 min="1" max="1000" step="1" />
                 </td>
             </tr>
         </table>
         <table style="text-align: center;margin-top: 10px;">
             <tr>
-                <td colspan="2">
-                    <button type="submit">计算</button>
-                </td>
+                <td colspan="2" style="padding: 10px 0 10px 0;">速度</td>
+            </tr>
+            <tr>
+                <td class="c_num" id="speed1">-- km/h</td>
+            </tr>
+            <tr>
+                <td class="c_num2" id="speed2">-- mph</td>
             </tr>
         </table>
+        <hr style="margin-top: 30px;">
+        <div style="margin: 10px 0 20px 0;padding: 5px;">
+            说明文档：<a href="https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md">技巧 -> 2. 传动速度</a><br>
+            轮圈尺寸参考：<a href="https://www.modernbike.com/iso-sizes-for-bicycle-tires-and-rims">modernbike</a>、<a
+                href="https://cyclingvitality.com/bike-wheel-sizes-explained-a-guide-for-beginners/">cyclingvitality</a>
+        </div>
     </form>
 </body>
 
 <script src="./utils.js"></script>
 <script src="./global.js"></script>
 <script>
+    var tireWidthVU;
 
     window.onload = function () {
         if (!isES6()) return
+        initView()
+        onWheelDiameterChange()
+        onCalc()
+    }
+
+    function initView() {
+        tireWidthVU = document.getElementById("tireWidthVU")
+        let wheelDiameterEl = getELWithName('wheelDiameterK')
+
+        let wdList = []
+        let wdKList = ['700c', '650b', '650c', '29in', '27.5in', '26in', '24in', '22in', '20in', '18in', '16in', '14in', '12.5in']
+        wdKList.forEach(k => {
+            wdList.push({ v: k, t: wheelDiameterMap[k].t })
+        });
+        wheelDiameterEl.innerHTML = getOptionList(wdList)
+    }
+
+    function onWheelDiameterChange(e) {
+        let wdKey = null
+        try {
+            wdKey = e.value
+        } catch (e) {
+            wdKey = '700c'
+        }
+        tireUnit = wdKey.includes("in") ? 1 : 0
+        let twMap = {}
+        if (tireUnit == 1) {
+            twMap = { min: 1, max: 5, step: 0.05, v: 2.3 }
+        } else {
+            twMap = { min: 18, max: 65, step: 1, v: 25 }
+        }
+        setRangeMap('tireWidth', twMap)
+    }
+
+    function onTireWidthChange(e) {
+        tireWidthVU.innerHTML = e.value + " " + getTireUnitText()
+    }
+
+    function onTireWidthVUClick() {
+        const v = Number(prompt("轮胎宽度", getELWithName('tireWidth').value))
+        setRangeValue('tireWidth', v)
     }
 
     function onCalc() {
+        const formData = new FormData(document.getElementById("mForm"));
+        let m = {};
+        formData.forEach((value, key) => m[key] = value);
+        m.cassette = Number(m.cassette)
+        m.chainrings = Number(m.chainrings)
+        m.tireDeflection = Number(m.tireDeflection)
+        m.rpm = Number(m.rpm)
+        m.tireWidth = Number(m.tireWidth);
+        if (tireUnit == 1) {
+            m.tireWidth = convertInchesToMM(m.tireWidth)
+        }
+        m.wheelDiameter = Number(wheelDiameterMap[m.wheelDiameterK].v)
+        console.log(m)
 
+        let tireRadius = (m.wheelDiameter / 2.0) + m.tireWidth - m.tireDeflection
+        let wheelSize = (tireRadius * 2.0) / 25.4
+        let rollout = m.cassette / m.chainrings * wheelSize * Math.PI
+        let speed2 = rollout * m.rpm * 60.0 / 12 / 5280;
+        let speed1 = speed2 * 1.609344
+
+        document.getElementById("speed1").innerHTML = speed1.toFixed(2) + " km/h"
+        document.getElementById("speed2").innerHTML = speed2.toFixed(2) + " mph"
         return false
     }
 </script>
