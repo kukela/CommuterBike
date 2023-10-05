@@ -10,18 +10,9 @@
 </head>
 
 <body>
-    <form id="mForm" onsubmit="return onCalc()">
+    <form id="mForm" onsubmit="return onCalc()" onchange="onCalc()">
         <h1 style="text-align: center;">胎压参考计算器</h1>
         <table>
-            <!-- <tr>
-                <td class="title">重量单位</td>
-                <td class="cxt" colspan="2">
-                    <input type="radio" id="wuR1" name="weightUnit" value="kg" checked />
-                    <label for="wuR1">公斤</label>
-                    <input type="radio" id="wuR2" name="weightUnit" value="lbs" />
-                    <label for="wuR2">磅</label>
-                </td>
-            </tr> -->
             <tr>
                 <td class="title">骑手体重</td>
                 <td class="cxt">
@@ -31,7 +22,7 @@
             </tr>
             <tr>
                 <td class="title">自行车类型</td>
-                <td class="cxt" colspan="2">
+                <td class="cxt">
                     <select name="rideStyle" onchange="onRideStyleChange(this)">
                         <option value="RIDE_STYLE_ROAD">公路车（Road）</option>
                         <option value="RIDE_STYLE_GRAVEL">砾石车（Gravel）</option>
@@ -45,12 +36,6 @@
                     </select>
                 </td>
             </tr>
-            <!-- <tr>
-                <td style="text-align: right;">
-                    <input type="checkbox" />
-                </td>
-                <td>使用预设值</td>
-            </tr> -->
             <tr>
                 <td class="title">车重</td>
                 <td class="cxt">
@@ -60,7 +45,7 @@
             </tr>
             <tr>
                 <td class="title">轮圈直径</td>
-                <td class="cxt" colspan="2">
+                <td class="cxt">
                     <select name="wheelDiameter"></select>
                 </td>
             </tr>
@@ -73,7 +58,7 @@
             </tr>
             <tr>
                 <td class="title">轮圈类型</td>
-                <td class="cxt" colspan="2">
+                <td class="cxt">
                     <select name="rimType"></select>
                 </td>
             </tr>
@@ -99,51 +84,48 @@
             </tr>
             <tr>
                 <td class="title">前轮外胎</td>
-                <td class="cxt" colspan="2">
+                <td class="cxt">
                     <select name="frontTireCasing"></select>
                 </td>
             </tr>
             <tr>
                 <td class="title">后轮外胎</td>
-                <td class="cxt" colspan="2">
+                <td class="cxt">
                     <select name="rearTireCasing"></select>
                 </td>
             </tr>
             <tr>
                 <td class="title">地面</td>
-                <td class="cxt" colspan="2">
+                <td class="cxt">
                     <select name="surface"></select>
                 </td>
             </tr>
         </table>
         <table style="text-align: center;margin-top: 10px;">
             <tr>
-                <td colspan="2">
-                    <button type="submit">计算</button>
-                </td>
+                <td colspan="2" style="padding: 10px 0;">参考胎压</td>
             </tr>
             <tr>
-                <td colspan="2" style="padding: 20px 0 10px 0;">参考胎压</td>
+                <td class="c_title w50">前轮</td>
+                <td class="c_title w50">后轮</td>
             </tr>
             <tr>
-                <td class="c_title">前轮</td>
-                <td class="c_title">后轮</td>
+                <td class="c_num w50" id="frontPsi">-- psi</td>
+                <td class="c_num w50" id="rearPsi">-- psi</td>
             </tr>
             <tr>
-                <td class="c_num" id="frontPsi">-- psi</td>
-                <td class="c_num" id="rearPsi">-- psi</td>
-            </tr>
-            <tr>
-                <td class="c_num2" id="frontBar">-- bar</td>
-                <td class="c_num2" id="rearBar">-- bar</td>
+                <td class="c_num2 w50" id="frontBar">-- bar</td>
+                <td class="c_num2 w50" id="rearBar">-- bar</td>
             </tr>
         </table>
         <hr style="margin-top: 30px;">
         <div style="margin: 10px 0 20px 0;padding: 5px;">
             技术来源：<a href="https://axs.sram.com/guides/tire/pressure">SRAM TIRE PRESSURE GUIDE</a><br>
-            说明文档：<a href="https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md">技巧 -> 1. 胎压</a><br>
             轮圈尺寸参考：<a href="https://www.modernbike.com/iso-sizes-for-bicycle-tires-and-rims">modernbike</a>、<a
                 href="https://cyclingvitality.com/bike-wheel-sizes-explained-a-guide-for-beginners/">cyclingvitality</a>
+            <br><br>
+            <a href="https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md">说明文档</a>、<a
+                href="https://kukela.gitee.io/commuter-bike/">更多工具</a>
         </div>
     </form>
 </body>
@@ -158,6 +140,7 @@
         if (!isES6()) return
         initView()
         onRideStyleChange()
+        onCalc()
     }
 
     function initView() {
@@ -342,5 +325,6 @@
         return Math.round(.001 * v * 100) / 100
     }
 </script>
+<script src="./baidu_tongji.js"></script>
 
 </html>

@@ -95,3 +95,11 @@ select {
     font-size: 24px;
     padding: 5px 0;
 }
+
+.w50 {
+    width: 50%;
+}
+
+.w100 {
+    width: 100%;
+}
