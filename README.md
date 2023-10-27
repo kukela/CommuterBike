@@ -16,7 +16,7 @@
 
 [链接](https://gitee.com/kukela/commuter-bike/blob/master/RoadBike/基础通勤.md)
 
-![x](https://kukela-images.oss-cn-shanghai.aliyuncs.com/CommuterBike/%E9%80%9A%E5%8B%A4%E5%85%AC%E8%B7%AF%E8%BD%A6/%E9%80%9A%E5%8B%A4%E5%85%AC%E8%B7%AF%E8%BD%A6_%E5%9F%BA%E7%A1%80_%E4%BE%A7%E5%9B%BE.jpg)
+![x](img/通勤公路车/通勤公路车_基础_侧图.jpg)
 
 **2.2. 进阶款**
 
@@ -40,16 +40,14 @@
 
 4. [技巧](https://gitee.com/kukela/commuter-bike/blob/master/Doc/技巧.md)、[胎压参考计算器](https://kukela.gitee.io/commuter-bike/tirePressureCalc.html)、[传动速度计算器](https://kukela.gitee.io/commuter-bike/gearCalc.html)
 
-## 4. 其他自行车
+5. [轮组](https://gitee.com/kukela/commuter-bike/blob/master/Doc/轮组.md)
 
-### 4.1. 买菜死飞车
+## 4. Diy配件
 
-适合5公里内骑行，20寸小轮配合动作车把，可以轻松进出电梯，以及安装车篮，休闲时还可以玩玩动作花样。价格￥350元左右，重量9.5kg左右（不包含车框和货架）。
+1. 通勤智能套件（正在开发中）
 
-[正在组装中...]
+   ![x](img/smart/fa2.jpg)
 
-### 4.2. 油碟砾石公路车
+2. 破风挡泥板（正在开发中）
 
-自由骑行是一个梦想，价格￥5000左右。
-
-[正在组装中...]
+   [示例图]
